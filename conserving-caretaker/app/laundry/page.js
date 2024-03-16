@@ -5,7 +5,6 @@ import { useState, useEffect } from "react";
 import LightSwitch from "../lightSwitch";
 import ProgressBar from "../progressBar";
 import landingStyles from "../landing.module.css";
-import Fridge from "../fridge";
 import TV from "../tv";
 import Door from "../door";
 
@@ -14,14 +13,51 @@ export default function Laundry() {
   const [progress, setProgress] = useState(0);
 
   useEffect(() => {
+    const savedProgress = parseFloat(localStorage.getItem("progress2")) || 0;
+    const savedLightState = localStorage.getItem("isLightOn2") === "true";
+
+    setIsLightOn(savedLightState);
+
+    const lastSavedTime =
+      parseInt(localStorage.getItem("lastSavedTime"), 10) || Date.now();
+    const currentTime = Date.now();
+    const elapsed = currentTime - lastSavedTime;
+    const additionalProgress = (elapsed / 100) * 0.01;
+
+    if (savedLightState) {
+      setProgress(savedProgress + additionalProgress);
+    } else {
+      setProgress(savedProgress);
+    }
+
+    localStorage.setItem("lastSavedTime2", Date.now().toString());
+  }, []);
+
+  useEffect(() => {
     let intervalId;
     if (isLightOn) {
       intervalId = setInterval(() => {
-        setProgress((prevProgress) => prevProgress + 0.01);
+        setProgress((prevProgress) => {
+          const newProgress = prevProgress + 0.01;
+          localStorage.setItem("progress2", newProgress.toString());
+          localStorage.setItem("isLightOn2", isLightOn.toString());
+          localStorage.setItem("lastSavedTime2", Date.now().toString());
+          return newProgress;
+        });
       }, 10);
     }
     return () => clearInterval(intervalId);
   }, [isLightOn]);
+
+  const toggleLight = () => {
+    const newState = !isLightOn;
+    setIsLightOn(newState);
+    localStorage.setItem("isLightOn", newState.toString());
+
+    if (!newState) {
+      localStorage.setItem("lastSavedTime", Date.now().toString());
+    }
+  };
 
   const voltsUsed = (Math.round(progress * 0.04 * 100) / 100).toFixed(2);
   const cost = (Math.round(progress * 0.04 * 0.2 * 100) / 100).toFixed(2);
@@ -31,19 +67,19 @@ export default function Laundry() {
   return (
     <div>
       <Head>
-        <title>Save Energy Yes</title>
-        <link rel="icon" href="/yoth.png" />
+        <title>Save Energy</title>
       </Head>
       <div className={landingStyles.frame}>
-        <Door link={"bedroom"}/>
-        <Fridge/>
-        <LightSwitch onToggle={() => setIsLightOn(!isLightOn)} />
+        <Door link={"bedroom"} />
+        <LightSwitch onToggle={toggleLight} isLightOn={isLightOn} />
         <div className={`${landingStyles.textBox} ${landingStyles.light}`}>
-          <p style={{ color: textColor}}>You have used up {voltsUsed} volts.</p>
+          <p style={{ color: textColor }}>
+            You have used up {voltsUsed} volts.
+          </p>
           <ProgressBar progress={progress} />
-          <p style={{ color: textColor}}>This light has cost you ${cost}.</p>
+          <p style={{ color: textColor }}>This light has cost you ${cost}.</p>
         </div>
-        <TV/>
+        <TV />
       </div>
     </div>
   );

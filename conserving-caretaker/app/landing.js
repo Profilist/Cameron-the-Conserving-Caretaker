@@ -1,4 +1,3 @@
-import illustration from '../public/illustration.svg';
 import styles from './landing.module.css';
 import { useState } from "react";
 
