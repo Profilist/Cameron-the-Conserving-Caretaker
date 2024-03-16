@@ -96,9 +96,9 @@ export default function Home() {
     }
   };
 
-  const voltsUsed = (Math.round(progress * 0.04 * 100) / 100).toFixed(2);
+  const wattsUsed = (Math.round(progress * 0.04 * 100) / 100).toFixed(2);
   const cost = (Math.round(progress * 0.04 * 0.2 * 100) / 100).toFixed(2);
-  const voltsUsedTV = (Math.round(progressTV * 0.04 * 100) / 100).toFixed(2);
+  const wattsUsedTV = (Math.round(progressTV * 0.04 * 100) / 100).toFixed(2);
   const costTV = (Math.round(progressTV * 0.04 * 0.2 * 100) / 100).toFixed(2);
 
   const textColor = isLightOn ? "#132436" : "white";
@@ -114,7 +114,7 @@ export default function Home() {
         <TV onToggle={toggleTV} isTVOn={isTVOn} />
         <div className={`${landingStyles.textBox} ${landingStyles.TV}`}>
           <p style={{ color: textColor }}>
-            You have used up {voltsUsedTV} volts.
+            You have used up {wattsUsedTV} watts.
           </p>
           <ProgressBar progress={progressTV} appliance={"LIGHTS"} />
           <p style={{ color: textColor }}>This TV has cost you ${costTV}.</p>
@@ -123,7 +123,7 @@ export default function Home() {
         <LightSwitch onToggle={toggleLight} isLightOn={isLightOn} />
         <div className={`${landingStyles.textBox} ${landingStyles.light}`}>
           <p style={{ color: textColor }}>
-            You have used up {voltsUsed} volts.
+            You have used up {wattsUsed} watts.
           </p>
           <ProgressBar progress={progress} appliance={"LIGHTS"} />
           <p style={{ color: textColor }}>This light has cost you ${cost}.</p>

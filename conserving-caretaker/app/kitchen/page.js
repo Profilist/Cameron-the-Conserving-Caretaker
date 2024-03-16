@@ -77,9 +77,9 @@ export default function Kitchen() {
     }
   };
 
-  const voltsUsed = (Math.round(progress * 0.04 * 100) / 100).toFixed(2);
+  const wattsUsed = (Math.round(progress * 0.04 * 100) / 100).toFixed(2);
   const cost = (Math.round(progress * 0.04 * 0.2 * 100) / 100).toFixed(2);
-  const voltsUsedFridge = (
+  const wattsUsedFridge = (
     Math.round(progressFridge * 0.04 * 100) / 100
   ).toFixed(2);
   const costFridge = (
@@ -98,7 +98,7 @@ export default function Kitchen() {
         <Fridge />
         <div className={`${landingStyles.textBox} ${landingStyles.fridge}`}>
           <p style={{ color: textColor }}>
-            You have used up {voltsUsedFridge} volts.
+            You have used up {wattsUsedFridge} watts.
           </p>
           <ProgressBar progress={progressFridge} appliance={"FRIDGE"}/>
           <p style={{ color: textColor }}>
@@ -108,7 +108,7 @@ export default function Kitchen() {
         <LightSwitch onToggle={toggleLight} isLightOn={isLightOn} />
         <div className={`${landingStyles.textBox} ${landingStyles.light}`}>
           <p style={{ color: textColor }}>
-            You have used up {voltsUsed} volts.
+            You have used up {wattsUsed} watts.
           </p>
           <ProgressBar progress={progress} appliance={"LIGHTS"}/>
           <p style={{ color: textColor }}>This light has cost you ${cost}.</p>

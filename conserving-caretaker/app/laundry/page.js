@@ -96,9 +96,9 @@ export default function Laundry() {
     }
   };
 
-  const voltsUsed = (Math.round(progress * 0.04 * 100) / 100).toFixed(2);
+  const wattsUsed = (Math.round(progress * 0.04 * 100) / 100).toFixed(2);
   const cost = (Math.round(progress * 0.04 * 0.2 * 100) / 100).toFixed(2);
-  const voltsUsedWasher = (Math.round(progressWasher * 0.04 * 100) / 100).toFixed(2);
+  const wattsUsedWasher = (Math.round(progressWasher * 0.04 * 100) / 100).toFixed(2);
   const costWasher = (Math.round(progressWasher * 0.04 * 0.2 * 100) / 100).toFixed(2);
 
   const textColor = isLightOn ? "#132436" : "white";
@@ -113,7 +113,7 @@ export default function Laundry() {
         <Washer onToggle={toggleWasher} isWashing={isWashing} />
         <div className={`${landingStyles.textBox} ${landingStyles.washer}`}>
           <p style={{ color: textColor }}>
-            You have used up {voltsUsedWasher} volts.
+            You have used up {wattsUsedWasher} watts.
           </p>
           <ProgressBar progress={progressWasher} appliance={"WASHING MACHINE"}/>
           <p style={{ color: textColor }}>This washing machine has cost you ${costWasher}.</p>
@@ -121,7 +121,7 @@ export default function Laundry() {
         <LightSwitch onToggle={toggleLight} isLightOn={isLightOn} />
         <div className={`${landingStyles.textBox} ${landingStyles.light}`}>
           <p style={{ color: textColor }}>
-            You have used up {voltsUsed} volts.
+            You have used up {wattsUsed} watts.
           </p>
           <ProgressBar progress={progress} appliance={"LIGHTS"}/>
           <p style={{ color: textColor }}>This light has cost you ${cost}.</p>
