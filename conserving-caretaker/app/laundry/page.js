@@ -55,7 +55,7 @@ export default function Laundry() {
           localStorage.setItem("lastSavedTime2", Date.now().toString());
           return newProgress;
         });
-      }, 50);
+      }, 20);
     }
     return () => clearInterval(intervalId);
   }, [isLightOn]);

@@ -51,7 +51,7 @@ export default function Kitchen() {
           localStorage.setItem("lastSavedTime1", Date.now().toString());
           return newProgress;
         });
-      }, 50);
+      }, 20);
     }
     return () => clearInterval(intervalId);
   }, [isLightOn]);
@@ -63,7 +63,7 @@ export default function Kitchen() {
         localStorage.setItem("progressFridge", newProgress.toString());
         return newProgress;
       });
-    }, 100);
+    }, 50);
     return () => clearInterval(interval);
   }, []);
 

@@ -55,7 +55,7 @@ export default function Home() {
           localStorage.setItem("lastSavedTime", Date.now().toString());
           return newProgress;
         });
-      }, 50);
+      }, 20);
     }
     return () => clearInterval(intervalId);
   }, [isLightOn]);
