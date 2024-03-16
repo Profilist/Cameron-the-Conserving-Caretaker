@@ -17,7 +17,7 @@ const Landing = () => {
             </div>
             <h1 className={styles.title}>Cameron, a Conserving Caretaker</h1>
             <p className={styles.description}>Track your energy usage, set goals, and save money with Cameron.</p>
-            <a href="/bedroom" className={styles.btn}>Get Started</a>
+            <a href="/form" className={styles.btn}>Get Started</a>
             <label className={styles.switch}>
                 <input type="checkbox" onChange={toggleDarkMode} />
                 <span className={styles.slider}></span>

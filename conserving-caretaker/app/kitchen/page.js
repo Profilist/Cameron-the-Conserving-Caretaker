@@ -6,7 +6,6 @@ import LightSwitch from "../lightSwitch";
 import ProgressBar from "../progressBar";
 import landingStyles from "../landing.module.css";
 import Fridge from "../fridge";
-import TV from "../tv";
 import Door from "../door";
 
 export default function Kitchen() {

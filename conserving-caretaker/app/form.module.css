@@ -1,0 +1,116 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap');
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #FEDC56;
+    color: #333;
+    transition: background-color 0.5s, color 0.5s;
+    position: relative;
+    background-image: linear-gradient(45deg, #FFFFFF25 25%, transparent 25%, transparent 50%, #FFFFFF25 50%, #FFFFFF25 75%, transparent 75%, transparent);
+    background-size: 100px 100px;
+    font-family: "Nunito Sans", sans-serif;
+}
+
+.title {
+    margin-bottom: 20px;
+}
+
+.form {
+    width: 80%;
+    max-width: 600px;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px #333;
+
+}
+
+.label {
+    display: block;
+    margin-bottom: 10px;
+}
+
+.inputNumber {
+    width: 95%;
+    padding: 8px;
+    border: 1px solid #333;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.inputSubmit {
+    padding: 10px 20px;
+    background-color: #333;
+    color: #FEDC56;
+    text-transform: uppercase;
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.inputSubmit:hover {
+    background-color: #555;
+}
+
+.explore {
+    padding: 10px 100px;
+    background-color: #333;
+    color: #F9F871;
+    text-transform: uppercase;
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.explore:hover {
+    background-color: #555;
+}
+
+.modal {
+    display: block; 
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(51, 51, 51, 1);
+    /* background-image: linear-gradient(45deg, #FFFFFF25 25%, transparent 25%, transparent 50%, #FFFFFF25 50%, #FFFFFF25 75%, transparent 75%, transparent); */
+    background-size: 100px 100px;
+}
+
+.modalContent {
+    background-color: white;
+    color: black;
+    font-weight: bold;
+    margin: 15% auto;
+    padding: 25px;
+    border: 4px solid #888;
+    width: 80%;
+    border-radius: 10px;
+    font-size: 18px;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: #fff;
+    text-decoration: none;
+    cursor: pointer;
+}

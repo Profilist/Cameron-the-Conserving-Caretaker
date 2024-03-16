@@ -5,7 +5,6 @@ import { useState, useEffect } from "react";
 import LightSwitch from "../lightSwitch";
 import ProgressBar from "../progressBar";
 import landingStyles from "../landing.module.css";
-import TV from "../tv";
 import Door from "../door";
 import Washer from "../washer";
 
