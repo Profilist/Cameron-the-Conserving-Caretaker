@@ -14,20 +14,12 @@
     align-items: center;
 }
 
-.illustration {
-    width: 30vw;
-    margin-right: 5vw;
-}
-
-.text {
-    margin-left: 5vw;
-}
-
 .textBox {
     height: 400px;
     margin: 5vw;
     align-items: left;
     position: absolute;
+    font-size: 18px;
 }
 
 .fridge {
@@ -36,7 +28,12 @@
 }
 
 .light {
-    top: -3%;
+    top: -1%;
+    left: 30%;
+}
+
+.washer {
+    top: 45%;
     left: 30%;
 }
 

@@ -20,13 +20,15 @@ export default function Door(props) {
     }, 2000);
   };
 
+  const nextRoom = props.link.charAt(0).toUpperCase() + props.link.slice(1);
+
   return (
     <div className={styles.backDoor}>
       <div
         className={`${styles.door} ${isOpen ? styles.doorOpen : ""} ${isZoomed ? styles.zoomEffect : ''}`}
         onClick={toggleDoor}
       >
-        <span className={styles.doorText}>{props.link}</span>
+        <span className={styles.doorText}>{nextRoom}</span>
       </div>
     </div>
   );
