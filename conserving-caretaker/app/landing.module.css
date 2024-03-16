@@ -37,6 +37,11 @@
     left: 30%;
 }
 
+.TV {
+    top: 48%;
+    left: 35%;
+}
+
 .header {
     font-size: clamp(3em, 5vw, 4em);
     font-weight: 700;

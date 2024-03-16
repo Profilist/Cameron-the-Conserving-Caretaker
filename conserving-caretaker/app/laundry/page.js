@@ -56,7 +56,7 @@ export default function Laundry() {
           localStorage.setItem("lastSavedTime2", Date.now().toString());
           return newProgress;
         });
-      }, 10);
+      }, 50);
     }
     return () => clearInterval(intervalId);
   }, [isLightOn]);
@@ -116,18 +116,17 @@ export default function Laundry() {
           <p style={{ color: textColor }}>
             You have used up {voltsUsedWasher} volts.
           </p>
-          <ProgressBar progress={progressWasher} />
-          <p style={{ color: textColor }}>This light has cost you ${costWasher}.</p>
+          <ProgressBar progress={progressWasher} appliance={"WASHING MACHINE"}/>
+          <p style={{ color: textColor }}>This washing machine has cost you ${costWasher}.</p>
         </div>
         <LightSwitch onToggle={toggleLight} isLightOn={isLightOn} />
         <div className={`${landingStyles.textBox} ${landingStyles.light}`}>
           <p style={{ color: textColor }}>
             You have used up {voltsUsed} volts.
           </p>
-          <ProgressBar progress={progress} />
+          <ProgressBar progress={progress} appliance={"LIGHTS"}/>
           <p style={{ color: textColor }}>This light has cost you ${cost}.</p>
         </div>
-        <TV />
       </div>
     </div>
   );

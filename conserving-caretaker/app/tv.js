@@ -1,10 +1,10 @@
 import styles from './tv.module.css';
 
-const tv = () => {
+const tv = ( {onToggle, isTVOn} ) => {
   return (
     <div className={styles.container}>
-      <div className={styles.monitor}>
-        <div className={styles.monitorScreen}></div>
+      <div className={`${styles.monitor} ${isTVOn ? styles.flicker : ''}`} onClick={onToggle}>
+        {isTVOn && <div className={styles.monitorScreen}></div>}
       </div>
     </div>
   );

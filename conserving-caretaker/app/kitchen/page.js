@@ -52,7 +52,7 @@ export default function Kitchen() {
           localStorage.setItem("lastSavedTime1", Date.now().toString());
           return newProgress;
         });
-      }, 10);
+      }, 50);
     }
     return () => clearInterval(intervalId);
   }, [isLightOn]);
@@ -64,7 +64,7 @@ export default function Kitchen() {
         localStorage.setItem("progressFridge", newProgress.toString());
         return newProgress;
       });
-    }, 10);
+    }, 100);
     return () => clearInterval(interval);
   }, []);
 
@@ -101,7 +101,7 @@ export default function Kitchen() {
           <p style={{ color: textColor }}>
             You have used up {voltsUsedFridge} volts.
           </p>
-          <ProgressBar progress={progressFridge} />
+          <ProgressBar progress={progressFridge} appliance={"FRIDGE"}/>
           <p style={{ color: textColor }}>
             This fridge has cost you ${costFridge}.
           </p>
@@ -111,10 +111,9 @@ export default function Kitchen() {
           <p style={{ color: textColor }}>
             You have used up {voltsUsed} volts.
           </p>
-          <ProgressBar progress={progress} />
+          <ProgressBar progress={progress} appliance={"LIGHTS"}/>
           <p style={{ color: textColor }}>This light has cost you ${cost}.</p>
         </div>
-        <TV />
       </div>
     </div>
   );

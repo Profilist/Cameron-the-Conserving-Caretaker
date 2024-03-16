@@ -10,28 +10,38 @@ import Door from "../door";
 
 export default function Home() {
   const [isLightOn, setIsLightOn] = useState(false);
+  const [isTVOn, setisTVOn] = useState(false);
   const [progress, setProgress] = useState(0);
+  const [progressTV, setProgressTV] = useState(0);
 
   useEffect(() => {
     const savedProgress = parseFloat(localStorage.getItem("progress")) || 0;
+    const savedProgressTV = parseFloat(localStorage.getItem("progressTV")) || 0;
     const savedLightState = localStorage.getItem("isLightOn") === "true";
+    const savedTVState = localStorage.getItem("isTVOn") === "true";
 
     setIsLightOn(savedLightState);
+    setisTVOn(savedTVState);
+
+    const lastSavedTime =
+      parseInt(localStorage.getItem("lastSavedTime"), 10) || Date.now();
+    const currentTime = Date.now();
+    const elapsed = currentTime - lastSavedTime;
+    const additionalProgress = (elapsed / 100) * 0.01;
 
     if (savedLightState) {
-      const lastSavedTime =
-        parseInt(localStorage.getItem("lastSavedTime"), 10) || Date.now();
-      const currentTime = Date.now();
-      const elapsed = currentTime - lastSavedTime;
-      const additionalProgress = (elapsed/100) * 0.01;
       setProgress(savedProgress + additionalProgress);
     } else {
       setProgress(savedProgress);
     }
 
-    if (!savedLightState) {
-      localStorage.setItem("lastSavedTime", Date.now().toString());
+    if (savedTVState) {
+      setProgressTV(savedProgressTV + additionalProgress);
+    } else {
+      setProgressTV(savedProgressTV);
     }
+
+    localStorage.setItem("lastSavedTime", Date.now().toString());
   }, []);
 
   useEffect(() => {
@@ -45,10 +55,26 @@ export default function Home() {
           localStorage.setItem("lastSavedTime", Date.now().toString());
           return newProgress;
         });
-      }, 10);
+      }, 50);
     }
     return () => clearInterval(intervalId);
   }, [isLightOn]);
+
+  useEffect(() => {
+    let intervalId;
+    if (isTVOn) {
+      intervalId = setInterval(() => {
+        setProgressTV((prevProgress) => {
+          const newProgress = prevProgress + 0.01;
+          localStorage.setItem("progressTV", newProgress.toString());
+          localStorage.setItem("isTVOn", isTVOn.toString());
+          localStorage.setItem("lastSavedTime", Date.now().toString());
+          return newProgress;
+        });
+      }, 10);
+    }
+    return () => clearInterval(intervalId);
+  }, [isTVOn]);
 
   const toggleLight = () => {
     const newState = !isLightOn;
@@ -60,8 +86,20 @@ export default function Home() {
     }
   };
 
+  const toggleTV = () => {
+    const newState = !isTVOn;
+    setisTVOn(newState);
+    localStorage.setItem("isTVOn", newState.toString());
+
+    if (!newState) {
+      localStorage.setItem("lastSavedTime", Date.now().toString());
+    }
+  };
+
   const voltsUsed = (Math.round(progress * 0.04 * 100) / 100).toFixed(2);
   const cost = (Math.round(progress * 0.04 * 0.2 * 100) / 100).toFixed(2);
+  const voltsUsedTV = (Math.round(progressTV * 0.04 * 100) / 100).toFixed(2);
+  const costTV = (Math.round(progressTV * 0.04 * 0.2 * 100) / 100).toFixed(2);
 
   const textColor = isLightOn ? "#132436" : "white";
 
@@ -72,15 +110,24 @@ export default function Home() {
       </Head>
       <div className={landingStyles.frame}>
         <Door link={"kitchen"} />
+
+        <TV onToggle={toggleTV} isTVOn={isTVOn} />
+        <div className={`${landingStyles.textBox} ${landingStyles.TV}`}>
+          <p style={{ color: textColor }}>
+            You have used up {voltsUsedTV} volts.
+          </p>
+          <ProgressBar progress={progressTV} appliance={"LIGHTS"} />
+          <p style={{ color: textColor }}>This TV has cost you ${costTV}.</p>
+        </div>
+
         <LightSwitch onToggle={toggleLight} isLightOn={isLightOn} />
         <div className={`${landingStyles.textBox} ${landingStyles.light}`}>
           <p style={{ color: textColor }}>
             You have used up {voltsUsed} volts.
           </p>
-          <ProgressBar progress={progress} />
+          <ProgressBar progress={progress} appliance={"LIGHTS"} />
           <p style={{ color: textColor }}>This light has cost you ${cost}.</p>
         </div>
-        <TV />
       </div>
     </div>
   );
