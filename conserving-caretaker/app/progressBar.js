@@ -8,7 +8,7 @@ export default function progressBar(props) {
         width: "100vh",
         height: "3rem",
         alignSelf: "normal",
-        margin: "3%",
+        // margin: "3%",
         borderRadius: "20px",
         backgroundColor: "#605B7B",
         position: "relative",

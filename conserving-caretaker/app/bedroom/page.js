@@ -31,12 +31,11 @@ export default function Home() {
     <div>
       <Head>
         <title>Save Energy</title>
-        <link rel="icon" href="/yoth.png" />
       </Head>
       <div className={landingStyles.frame}>
         <Door link={"kitchen"}/>
         <LightSwitch onToggle={() => setIsLightOn(!isLightOn)} />
-        <div className={landingStyles.textBox}>
+        <div className={`${landingStyles.textBox} ${landingStyles.light}`}>
           <p style={{ color: textColor}}>You have used up {voltsUsed} volts.</p>
           <ProgressBar progress={progress} />
           <p style={{ color: textColor}}>This light has cost you ${cost}.</p>

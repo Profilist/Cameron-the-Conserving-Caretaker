@@ -45,12 +45,12 @@
 }
 
 .lightSwitchLabel {
-  position: relative;
+  position: absolute;
   display: block;
   height: 300px;
   width: 200px;
-  left: -10vh;
-  top: -30vh;
+  left: 35vh;
+  top: -3vh;
   z-index: 0;
   margin: 100px auto 0 auto;
   background-color: #fff4d3;

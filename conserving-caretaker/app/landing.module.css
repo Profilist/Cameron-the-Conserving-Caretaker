@@ -27,6 +27,17 @@
     height: 400px;
     margin: 5vw;
     align-items: left;
+    position: absolute;
+}
+
+.fridge {
+    top: 45%;
+    left: 30%;
+}
+
+.light {
+    top: -3%;
+    left: 30%;
 }
 
 .header {

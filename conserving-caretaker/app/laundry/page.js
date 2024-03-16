@@ -38,7 +38,7 @@ export default function Laundry() {
         <Door link={"bedroom"}/>
         <Fridge/>
         <LightSwitch onToggle={() => setIsLightOn(!isLightOn)} />
-        <div className={landingStyles.textBox}>
+        <div className={`${landingStyles.textBox} ${landingStyles.light}`}>
           <p style={{ color: textColor}}>You have used up {voltsUsed} volts.</p>
           <ProgressBar progress={progress} />
           <p style={{ color: textColor}}>This light has cost you ${cost}.</p>
