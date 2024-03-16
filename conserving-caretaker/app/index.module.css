@@ -1,0 +1,121 @@
+@font-face {
+  font-family: "ColfaxAI";
+  src: url(https://cdn.openai.com/API/fonts/ColfaxAIRegular.woff2)
+      format("woff2"),
+    url(https://cdn.openai.com/API/fonts/ColfaxAIRegular.woff) format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "ColfaxAI";
+  src: url(https://cdn.openai.com/API/fonts/ColfaxAIBold.woff2) format("woff2"),
+    url(https://cdn.openai.com/API/fonts/ColfaxAIBold.woff) format("woff");
+  font-weight: bold;
+  font-style: normal;
+}
+.main,
+.main input {
+  font-size: 16px;
+  line-height: 24px;
+  color: #353740;
+  font-family: "ColfaxAI", Helvetica, sans-serif;
+}
+.main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 60px;
+  height: 220vh;
+}
+.main .icon {
+  width: 150px;
+}
+.main h3 {
+  font-size: 52px;
+  line-height: 40px;
+  font-weight: bold;
+  color: #FFFFFF;
+  margin: 50px 0 70px;
+}
+.main form {
+  display: flex;
+  flex-direction: column;
+  width: 320px;
+}
+.main input[type="text"] {
+  padding: 12px 16px;
+  border: none;
+  border-radius: 4px;
+  margin-bottom: 35px;
+  outline-color: #A3262A;
+  background-color: #FFD84B;
+  color: #000000;
+}
+.main ::placeholder {
+  color: #8e8ea0;
+  opacity: 1;
+}
+.main input[type="submit"] {
+  padding: 12px 0;
+  color: #fff;
+  background-color: #F2888B;
+  border: none;
+  border-radius: 4px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.main .collapses {
+  margin-top: 30px;
+  border-spacing: 30px 50px;
+  width: 50%;
+  /* background-color: #F2888B; */
+  border-radius: 4px;
+}
+
+.main .progressButton {
+  margin: 20px;
+  padding: 20px 80px;
+  color: #fff;
+  background-color: #F2888B;
+  border-width: 10px;
+  border-color: #A3262A;
+  border-radius: 4px;
+  text-align: center;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 150%;
+}
+
+.main ul {
+  list-style-type: none;
+  padding: 2%;
+  width: 70%;
+  margin: 50px;
+  background-color: #FFD84B;
+  display: inline-block;
+  border-radius: 8px;
+}
+
+.main li {
+  margin: 10px;
+}
+
+.main li:last-child {
+  margin-top: 20px; 
+}
+
+.main .item {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+}
+
+.main .item label {
+  vertical-align: text-bottom;
+  margin-left: 0.2rem;
+}
+
+.main .progressBarContainer {
+  align-self: inherit;
+}

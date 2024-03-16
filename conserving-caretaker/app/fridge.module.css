@@ -1,0 +1,138 @@
+.fridge {
+  width: 400px;
+  height: auto;
+  margin: 0 auto;
+  padding-top: 50px;
+  text-align: center;
+}
+
+.fridgeBody {
+  background-color: #1abc9c;
+  width: 250px;
+  height: 400px;
+  border-radius: 20px 20px 10px 10px;
+  margin: 0 auto;
+  position: relative;
+  animation: jump 2s cubic-bezier(0.445, 0.05, 0.55, 0.95) 3s infinite alternate;
+}
+
+.handle {
+  position: absolute;
+  right: 20px;
+  width: 35px;
+  height: 15px;
+}
+
+.handle:before {
+  content: "";
+  width: 100%;
+  height: 5px;
+  background: #efefef;
+  border-top-left-radius: 50px 5px;
+  border-top-right-radius: 5px;
+  display: block;
+}
+
+.handle:after {
+  content: "";
+  width: 100%;
+  height: 5px;
+  background: #d9d8d9;
+  border-bottom-left-radius: 50px 5px;
+  border-bottom-right-radius: 5px;
+  display: block;
+  box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.25);
+}
+
+.top {
+  top: 90px;
+}
+
+.bottom {
+  top: 150px;
+}
+
+.divider {
+  width: 250px;
+  height: 4px;
+  background: #2c3e50;
+  position: absolute;
+  top: 120px;
+}
+
+.divider:before,
+.divider:after {
+  content: "";
+  display: block;
+  background: #e7e7e8;
+  position: absolute;
+  width: 100%;
+  height: 5px;
+}
+
+.divider:before {
+  top: -5px;
+}
+
+.divider:after {
+  bottom: -5px;
+}
+
+.hightlight {
+  width: 12px;
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+.topHightlight {
+  position: absolute;
+  top: 12px;
+  left: 15px;
+  height: 20px;
+  border-radius: 15px;
+  transform: rotate(45deg);
+}
+
+.bottomHightlight {
+  position: absolute;
+  top: 50px;
+  left: 10px;
+  height: 300px;
+  border-radius: 15px;
+}
+
+.shadowBottom {
+  position: absolute;
+  bottom: 0;
+  height: 12px;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.1);
+  border-radius: 0 0 10px 10px;
+}
+
+.fridgeShadow {
+  width: 300px;
+  height: 35px;
+  background-color: rgba(0, 0, 0, 0.2);
+  margin: 20px auto 0 auto;
+  border-radius: 50%;
+  animation: shrink 2s cubic-bezier(0.445, 0.05, 0.55, 0.95) 3s infinite
+    alternate;
+}
+
+@keyframes jump {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(0, 20px, 0);
+  }
+}
+
+@keyframes shrink {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(0.85);
+  }
+}
