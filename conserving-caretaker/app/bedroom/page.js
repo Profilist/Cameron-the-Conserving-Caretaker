@@ -2,13 +2,11 @@
 
 import Head from "next/head";
 import { useState, useEffect } from "react";
-import styles from "./index.module.css";
-import LightSwitch from "./lightSwitch";
-import ProgressBar from "./progressBar";
-import landingStyles from "./landing.module.css";
-import Fridge from "./fridge";
-import TV from "./tv";
-import Door from "./door";
+import LightSwitch from "../lightSwitch";
+import ProgressBar from "../progressBar";
+import landingStyles from "../landing.module.css";
+import TV from "../tv";
+import Door from "../door";
 
 export default function Home() {
   const [isLightOn, setIsLightOn] = useState(false);
@@ -36,7 +34,7 @@ export default function Home() {
         <link rel="icon" href="/yoth.png" />
       </Head>
       <div className={landingStyles.frame}>
-        <Door/>
+        <Door link={"kitchen"}/>
         <LightSwitch onToggle={() => setIsLightOn(!isLightOn)} />
         <div className={landingStyles.textBox}>
           <p style={{ color: textColor}}>You have used up {voltsUsed} volts.</p>

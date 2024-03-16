@@ -9,7 +9,7 @@ import Fridge from "../fridge";
 import TV from "../tv";
 import Door from "../door";
 
-export default function Kitchen() {
+export default function Laundry() {
   const [isLightOn, setIsLightOn] = useState(false);
   const [progress, setProgress] = useState(0);
 
@@ -35,7 +35,7 @@ export default function Kitchen() {
         <link rel="icon" href="/yoth.png" />
       </Head>
       <div className={landingStyles.frame}>
-        <Door link={"laundry"}/>
+        <Door link={"bedroom"}/>
         <Fridge/>
         <LightSwitch onToggle={() => setIsLightOn(!isLightOn)} />
         <div className={landingStyles.textBox}>

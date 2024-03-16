@@ -1,25 +1,33 @@
 "use client";
 
-import { useState } from 'react';
-import styles from './door.module.css';
-import Link from 'next/link';
+import { useState } from "react";
+import { useRouter } from "next/navigation";
+import styles from "./door.module.css";
 
-const door = () => {
+export default function Door(props) {
+  const router = useRouter();
   const [isOpen, setIsOpen] = useState(false);
+  const [isZoomed, setIsZoomed] = useState(false);
 
   const toggleDoor = () => {
     setIsOpen(!isOpen);
+    setTimeout(() => {
+      setIsZoomed(true);
+    }, 1000);
+
+    setTimeout(() => {
+      router.push(`/${props.link}`);
+    }, 2000);
   };
 
   return (
     <div className={styles.backDoor}>
-      <div 
-        className={`${styles.door} ${isOpen ? styles.doorOpen : ''}`} 
-        onClick={toggleDoor}>
+      <div
+        className={`${styles.door} ${isOpen ? styles.doorOpen : ""} ${isZoomed ? styles.zoomEffect : ''}`}
+        onClick={toggleDoor}
+      >
+        <span className={styles.doorText}>{props.link}</span>
       </div>
-      <Link href="/kitchen">Kitchen</Link>
     </div>
   );
-};
-
-export default door;
+}
